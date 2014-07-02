@@ -1,0 +1,10 @@
+<Alloy>
+	<Window layout="vertical">
+		<View layout="vertical" top="70px" width="70%">
+			<ImageView id="imageViewIconoApp" image="/appicon.png" width="100px" height="100px"/>
+			<TextField hintText="usuario" height="40" width="Ti.UI.FILL"></TextField>
+			<TextField hintText="clave" passwordMask="true" height="40" width="Ti.UI.FILL"></TextField>
+			<Button height="40" width="Ti.UI.FILL">ingresar</Button>
+		</View>
+	</Window>
+</Alloy>

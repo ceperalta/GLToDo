@@ -1,0 +1,19 @@
+<Alloy>
+	<TabGroup>
+		<Tab id="tab1" title="Pendientes" icon="KS_nav_ui.png">
+			<Window id="winTab1">
+				<Label>1</Label>
+			</Window>
+		</Tab>
+		<Tab id="tab2" title="En Progreso" icon="KS_nav_ui.png">
+			<Window id="winTab2">
+				<Label>2</Label>
+			</Window>
+		</Tab>
+		<Tab id="tab3"  title="Finalizadas"  icon="KS_nav_ui.png">
+			<Window id="winTab3">
+				<Label>3</Label>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>
