@@ -31,6 +31,8 @@ function inicilizarPropiedadesAppSoloSiEstanVacias() {
 
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
+Alloy.Collections.tareas = Alloy.createCollection("tareas");
+
 inicilizarPropiedadesAppSoloSiEstanVacias();
 
 Alloy.createController("index");

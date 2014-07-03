@@ -1,5 +1,8 @@
 function Controller() {
     function inicializarVista() {
+        var dao = require("DAO");
+        var tareasCollection = dao.tomarTodasLasTareas();
+        console.warn(tareasCollection.at(0).get("alloy_id") + tareasCollection.at(0).get("texto"));
         $.index.open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -25,8 +28,8 @@ function Controller() {
     $.__views.imageViewIconoApp = Ti.UI.createImageView({
         id: "imageViewIconoApp",
         image: "/appicon.png",
-        width: "100px",
-        height: "100px"
+        width: "200px",
+        height: "200px"
     });
     $.__views.__alloyId0.add($.__views.imageViewIconoApp);
     $.__views.__alloyId1 = Ti.UI.createTextField({
@@ -45,9 +48,10 @@ function Controller() {
     });
     $.__views.__alloyId0.add($.__views.__alloyId2);
     $.__views.__alloyId3 = Ti.UI.createButton({
-        title: "ingresar",
+        title: "Ingresar",
         height: "40",
         width: Ti.UI.FILL,
+        borderColor: "blue",
         id: "__alloyId3"
     });
     $.__views.__alloyId0.add($.__views.__alloyId3);

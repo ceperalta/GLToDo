@@ -10,6 +10,8 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
+Alloy.Collections.tareas = Alloy.createCollection('tareas');
+
 inicilizarPropiedadesAppSoloSiEstanVacias();
 
 /**
