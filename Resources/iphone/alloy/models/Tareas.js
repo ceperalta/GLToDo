@@ -1,8 +1,10 @@
 exports.definition = {
     config: {
         columns: {
-            alloy_id: "intenger",
-            texto: "text"
+            alloy_id: "INTEGER",
+            texto: "TEXT",
+            prioridad: "INTEGER",
+            estado: "TEXT"
         },
         adapter: {
             type: "sql",

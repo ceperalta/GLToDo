@@ -2,9 +2,9 @@
 	<Window layout="vertical">
 		<View layout="vertical" top="70px" width="70%">
 			<ImageView id="imageViewIconoApp" image="/appicon.png" width="200px" height="200px"/>
-			<TextField hintText="usuario" height="40" width="Ti.UI.FILL"></TextField>
-			<TextField hintText="clave" passwordMask="true" height="40" width="Ti.UI.FILL"></TextField>
-			<Button height="40" width="Ti.UI.FILL" borderColor="blue">Ingresar</Button>
+			<TextField id="textFieldUsuario" hintText="usuario" height="40" width="Ti.UI.FILL"></TextField>
+			<TextField id="textFieldClave" hintText="clave" passwordMask="true" height="40" width="Ti.UI.FILL"></TextField>
+			<Button height="40" width="Ti.UI.FILL" borderColor="blue" onClick="ingresar">Ingresar</Button>
 		</View>
 	</Window>
 </Alloy>

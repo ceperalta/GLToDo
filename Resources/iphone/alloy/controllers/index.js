@@ -1,9 +1,13 @@
 function Controller() {
     function inicializarVista() {
-        var dao = require("DAO");
-        var tareasCollection = dao.tomarTodasLasTareas();
-        console.warn(tareasCollection.at(0).get("alloy_id") + tareasCollection.at(0).get("texto"));
         $.index.open();
+    }
+    function ingresar() {
+        cargaVistaTabsTareas();
+    }
+    function cargaVistaTabsTareas() {
+        $.index.visible = false;
+        Alloy.createController("tabsTareas").getView().open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
@@ -12,6 +16,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "#fff",
         layout: "vertical",
@@ -32,32 +37,35 @@ function Controller() {
         height: "200px"
     });
     $.__views.__alloyId0.add($.__views.imageViewIconoApp);
-    $.__views.__alloyId1 = Ti.UI.createTextField({
+    $.__views.textFieldUsuario = Ti.UI.createTextField({
+        id: "textFieldUsuario",
         hintText: "usuario",
         height: "40",
-        width: Ti.UI.FILL,
-        id: "__alloyId1"
+        width: Ti.UI.FILL
     });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
-    $.__views.__alloyId2 = Ti.UI.createTextField({
+    $.__views.__alloyId0.add($.__views.textFieldUsuario);
+    $.__views.textFieldClave = Ti.UI.createTextField({
+        id: "textFieldClave",
         hintText: "clave",
         passwordMask: "true",
         height: "40",
-        width: Ti.UI.FILL,
-        id: "__alloyId2"
+        width: Ti.UI.FILL
     });
-    $.__views.__alloyId0.add($.__views.__alloyId2);
-    $.__views.__alloyId3 = Ti.UI.createButton({
+    $.__views.__alloyId0.add($.__views.textFieldClave);
+    $.__views.__alloyId1 = Ti.UI.createButton({
         title: "Ingresar",
         height: "40",
         width: Ti.UI.FILL,
         borderColor: "blue",
-        id: "__alloyId3"
+        id: "__alloyId1"
     });
-    $.__views.__alloyId0.add($.__views.__alloyId3);
+    $.__views.__alloyId0.add($.__views.__alloyId1);
+    ingresar ? $.__views.__alloyId1.addEventListener("click", ingresar) : __defers["$.__views.__alloyId1!click!ingresar"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    require("DAO");
     inicializarVista();
+    __defers["$.__views.__alloyId1!click!ingresar"] && $.__views.__alloyId1.addEventListener("click", ingresar);
     _.extend($, exports);
 }
 

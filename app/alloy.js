@@ -12,6 +12,10 @@
 
 Alloy.Collections.tareas = Alloy.createCollection('tareas');
 
+
+var dao = require('DAO');
+dao.cargaDataEjemplar();
+
 inicilizarPropiedadesAppSoloSiEstanVacias();
 
 /**
@@ -30,10 +34,12 @@ function inicilizarPropiedadesAppSoloSiEstanVacias() {
 			orden : 2,
 			lbl : "Media"
 		}, {
-			orden : 2,
+			orden : 3,
 			lbl : "Baja"
 		}];
-		var listaDeEstados = ["Pendiente", "En Progreso", "Finalizada"];
+		
+		var listaDeEstados = [{pendiente:"Pendiente",en_progreso:"En Progreso",finalizada:"Finalizada"}];
+		
 		var listaDeUsuarios = [{
 			id : 1,
 			usuario : "carlos",
@@ -45,8 +51,8 @@ function inicilizarPropiedadesAppSoloSiEstanVacias() {
 		}];
 
 		Ti.App.Properties.setString("ListaDePrioridades", listaDePrioridades);
-		Ti.App.Properties.setString("listaDeEstados", listaDeEstados);
-		Ti.App.Properties.setString("listaDeUsuarios", listaDeUsuarios);
+		Ti.App.Properties.setString('ListaDeEstados',JSON.stringify(listaDeEstados));
+		Ti.App.Properties.setString("ListaDeUsuarios",JSON.stringify(listaDeUsuarios));
 
 		Ti.App.Properties.setString("TituloApp", "GLToDo");
 
