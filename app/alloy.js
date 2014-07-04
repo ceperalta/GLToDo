@@ -14,13 +14,24 @@ Alloy.Collections.tareas = Alloy.createCollection('tareas');
 
 
 var dao = require('DAO');
+
+
 dao.cargaDataEjemplar();
+
+
+var strUsuarioActual = "";
+var idTareaActualEdicion = "";
+var intPrioridadActual = 0;
+var strEstadoActual = "";
+
 
 inicilizarPropiedadesAppSoloSiEstanVacias();
 
-/**
- * Inicializamos las propiedades generales de la App solo si ya no fueron inicializadas
- */
+
+var estados = JSON.parse(Ti.App.Properties.getString('ListaDeEstados'));
+
+
+
 function inicilizarPropiedadesAppSoloSiEstanVacias() {
 
 	if (!Ti.App.Properties.getBool("AppInicializada")) {

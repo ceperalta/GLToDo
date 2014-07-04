@@ -3,7 +3,10 @@ function Controller() {
         $.index.open();
     }
     function ingresar() {
-        cargaVistaTabsTareas();
+        if (dao.controlLogin($.textFieldUsuario.value, $.textFieldClave.value)) {
+            strUsuarioActual = $.textFieldUsuario.value;
+            cargaVistaTabsTareas();
+        } else alert("Usuario y/o clave incorrecta", "Control de acceso");
     }
     function cargaVistaTabsTareas() {
         $.index.visible = false;
@@ -23,27 +26,27 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId0 = Ti.UI.createView({
+    $.__views.__alloyId14 = Ti.UI.createView({
         layout: "vertical",
         top: "70px",
         width: "70%",
-        id: "__alloyId0"
+        id: "__alloyId14"
     });
-    $.__views.index.add($.__views.__alloyId0);
+    $.__views.index.add($.__views.__alloyId14);
     $.__views.imageViewIconoApp = Ti.UI.createImageView({
         id: "imageViewIconoApp",
         image: "/appicon.png",
         width: "200px",
         height: "200px"
     });
-    $.__views.__alloyId0.add($.__views.imageViewIconoApp);
+    $.__views.__alloyId14.add($.__views.imageViewIconoApp);
     $.__views.textFieldUsuario = Ti.UI.createTextField({
         id: "textFieldUsuario",
         hintText: "usuario",
         height: "40",
         width: Ti.UI.FILL
     });
-    $.__views.__alloyId0.add($.__views.textFieldUsuario);
+    $.__views.__alloyId14.add($.__views.textFieldUsuario);
     $.__views.textFieldClave = Ti.UI.createTextField({
         id: "textFieldClave",
         hintText: "clave",
@@ -51,21 +54,20 @@ function Controller() {
         height: "40",
         width: Ti.UI.FILL
     });
-    $.__views.__alloyId0.add($.__views.textFieldClave);
-    $.__views.__alloyId1 = Ti.UI.createButton({
+    $.__views.__alloyId14.add($.__views.textFieldClave);
+    $.__views.__alloyId15 = Ti.UI.createButton({
         title: "Ingresar",
         height: "40",
         width: Ti.UI.FILL,
         borderColor: "blue",
-        id: "__alloyId1"
+        id: "__alloyId15"
     });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
-    ingresar ? $.__views.__alloyId1.addEventListener("click", ingresar) : __defers["$.__views.__alloyId1!click!ingresar"] = true;
+    $.__views.__alloyId14.add($.__views.__alloyId15);
+    ingresar ? $.__views.__alloyId15.addEventListener("click", ingresar) : __defers["$.__views.__alloyId15!click!ingresar"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    require("DAO");
     inicializarVista();
-    __defers["$.__views.__alloyId1!click!ingresar"] && $.__views.__alloyId1.addEventListener("click", ingresar);
+    __defers["$.__views.__alloyId15!click!ingresar"] && $.__views.__alloyId15.addEventListener("click", ingresar);
     _.extend($, exports);
 }
 

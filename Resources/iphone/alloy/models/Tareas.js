@@ -4,7 +4,8 @@ exports.definition = {
             alloy_id: "INTEGER",
             texto: "TEXT",
             prioridad: "INTEGER",
-            estado: "TEXT"
+            estado: "TEXT",
+            usuario: "TEXT"
         },
         adapter: {
             type: "sql",

@@ -12,14 +12,48 @@ exports.tomarTareasOrdenadasPorPrioridadParaEstadoFinalizadas = function() {
  	return Alloy.Collections.tareas;
 };
 
-exports.tomarTareasOrdenadasPorPrioridadParaEstadoPendientes = function() {
-	
-	var estados = JSON.parse(Ti.App.Properties.getString('ListaDeEstados'));
-	Alloy.Collections.tareas.fetch({query:'SELECT * from tareas where estado="'+estados[0].pendiente+'" order by prioridad ASC'});
- 	
+exports.tomarTareasOrdenadasPorPrioridadParaEstado = function(strEstado) {
+	Alloy.Collections.tareas.fetch({query:'SELECT * from tareas where estado="'+strEstado+'" and usuario="'+strUsuarioActual+'" order by prioridad ASC'});
  	return Alloy.Collections.tareas;
 };
 
+exports.tomarTextoTareaParaID = function(strID) {
+	Alloy.Collections.tareas.fetch({query:'SELECT * from tareas where alloy_id="'+strID+'"'});
+ 	return Alloy.Collections.tareas.at(0).get("texto");
+};
+
+
+
+exports.agregaTarea = function(strTexto,intPrioridad,strEstado) {
+	
+	var tareaModel = Alloy.createModel('Tareas', {
+	    texto : strTexto,
+        prioridad: intPrioridad,
+        estado: strEstado,
+        usuario: strUsuarioActual
+    });
+    Alloy.Collections.tareas.add(tareaModel);
+    tareaModel.save();
+};
+
+
+exports.eliminiarTareaParaID = function(idTareaActualEdicion){
+	var tarea = Alloy.Collections.tareas.get(idTareaActualEdicion);
+	tarea.destroy();
+};
+
+exports.editaTextoTareaParaID = function(strID,strTexto,intPrioridad,strEstado) {
+	
+	var tareaModel = Alloy.createModel('Tareas', {
+		alloy_id: strID,
+        texto : strTexto,
+        prioridad: intPrioridad,
+        estado: strEstado,
+        usuario: strUsuarioActual
+    });
+    Alloy.Collections.tareas.add(tareaModel);
+    tareaModel.save();
+};
 
 exports.controlLogin = function(strUsuario,strClave) {
 	
@@ -37,25 +71,28 @@ exports.controlLogin = function(strUsuario,strClave) {
 exports.cargaDataEjemplar = function() {
  
     var tareaModel = Alloy.createModel('Tareas', {
-        texto : "comprar carne p3",
+        texto : "comprar carne p3 carlos",
         prioridad: 3,
-        estado: "Pendiente"
+        estado: "Pendiente",
+        usuario: "carlos"
     });
     Alloy.Collections.tareas.add(tareaModel);
     tareaModel.save();
     
      var tareaModel = Alloy.createModel('Tareas', {
-        texto : "comprar carne p1",
+        texto : "comprar carne p1 carlos",
         prioridad: 1,
-        estado: "Pendiente"
+         estado: "Pendiente",
+        usuario: "carlos"
     });
     Alloy.Collections.tareas.add(tareaModel);
     tareaModel.save();
     
      var tareaModel = Alloy.createModel('Tareas', {
-        texto : "comprar carne p2",
+        texto : "comprar carne p2 cefe",
         prioridad: 2,
-        estado: "Pendiente"
+         estado: "Pendiente",
+        usuario: "cefe"
     });
     Alloy.Collections.tareas.add(tareaModel);
     tareaModel.save();
@@ -63,17 +100,19 @@ exports.cargaDataEjemplar = function() {
     
     
     tareaModel = Alloy.createModel('Tareas', {
-        texto : "comprar leña",
+        texto : "comprar leña cefe",
         prioridad: 2,
-        estado: "Finalizada"
+        estado: "Finalizada",
+        usuario: "cefe"
     });
     Alloy.Collections.tareas.add(tareaModel);
     tareaModel.save();
     
      tareaModel = Alloy.createModel('Tareas', {
-        texto : "comprar pan",
+        texto : "comprar pan carlos",
         prioridad: 1,
-        estado: "En Progreso"
+        estado: "En Progreso",
+        usuario: "carlos"
     });
     Alloy.Collections.tareas.add(tareaModel);
     tareaModel.save();

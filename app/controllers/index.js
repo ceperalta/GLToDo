@@ -1,22 +1,18 @@
-var dao = require('DAO');
 inicializarVista();
 
 
-/**
- * Inicializamos la vista de este controlador 
- */
 function inicializarVista(){
 	$.index.open();
 }
 
 function ingresar() {
-	
-	if(dao.controlLogin($.textFieldUsuario.value,$.textFieldClave.value))
+	if(dao.controlLogin($.textFieldUsuario.value,$.textFieldClave.value)){
+		strUsuarioActual = $.textFieldUsuario.value;
 		cargaVistaTabsTareas();
-	else
-		alert("Ingreso incorrecto");
-	
-	
+	}
+	else{
+		alert("Usuario y/o clave incorrecta","Control de acceso");
+	}
 }
 
 function cargaVistaTabsTareas(){

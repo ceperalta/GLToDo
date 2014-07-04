@@ -41,6 +41,16 @@ var dao = require("DAO");
 
 dao.cargaDataEjemplar();
 
+var strUsuarioActual = "";
+
+var idTareaActualEdicion = "";
+
+var intPrioridadActual = 0;
+
+var strEstadoActual = "";
+
 inicilizarPropiedadesAppSoloSiEstanVacias();
+
+var estados = JSON.parse(Ti.App.Properties.getString("ListaDeEstados"));
 
 Alloy.createController("index");

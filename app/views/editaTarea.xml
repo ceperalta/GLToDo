@@ -1,0 +1,14 @@
+<Alloy>
+	<Window id="editaWin" layout="vertical" height="60%" width="90%" backgroundColor="gray" borderRadius="30" onOpen="abreWin" >
+		<TextField id="textFieldTarea" top="20" height="40" width="90%" borderRadius="20" textAlign="center" backgroundColor="lightgray"></TextField>
+		<Toolbar top="20" width="80%">
+			<Items>
+				<Button height="40" borderColor="blue" onClick="editar">editar</Button>
+				<FlexSpace/>
+				<Button height="40" borderColor="blue" onClick="eliminar">eliminar</Button>
+				<FlexSpace/>
+				<Button height="40" borderColor="blue" onClick="cancelar">cancelar</Button>
+			</Items>
+		</Toolbar>
+	</Window>
+</Alloy>

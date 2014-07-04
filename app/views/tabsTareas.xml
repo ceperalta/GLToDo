@@ -1,27 +1,30 @@
 <Alloy>
 	<TabGroup>
-		<Tab id="tab1" title="Pendientes" icon="KS_nav_ui.png">
+		<Tab id="tab1" title="Pendientes" icon="KS_nav_ui.png" onFocus="cambiaTabPendientes" >
 			<Window id="winTab1" backgroundColor="white" layout="vertical" >
-				
-				<Toolbar layout="horizontal" height="40">
-					<Items>
-						<Button height="40" borderColor="blue" onClick="agregarTarea">[+] Agregar</Button>
-						<FlexSpace/>
-						<Button height="40" borderColor="blue" onClick="cerrarSesion">Cerrar</Button>
-					</Items>
-				</Toolbar>
-				<TableView width="Ti.UI.FILL" id='tableViewPendientes'>
-					
-				</TableView>
-				
+				<RightNavButton>
+                   <Button height="40" borderColor="blue" onClick="cerrarSesion">Cerrar</Button>
+			   	</RightNavButton>
+			   	<LeftNavButton>
+			   		 <Button height="40" borderColor="blue" onClick="agregarTarea">[+] Agregar</Button>
+			   	</LeftNavButton>
+				<TableView width="Ti.UI.FILL" id='tableViewPendientes' onClick="selPendiente"></TableView>
 			</Window>
 		</Tab>
-		<Tab id="tab2" title="En Progreso" icon="KS_nav_ui.png">
+		<Tab id="tab2" title="En Progreso" icon="KS_nav_ui.png" onFocus="cambiaTabEnProgreso">
 			<Window id="winTab2" backgroundColor="white">
+				<RightNavButton>
+                    <Button height="40" borderColor="blue" onClick="cerrarSesion">Cerrar</Button>
+			   	</RightNavButton>
+				<TableView width="Ti.UI.FILL" id='tableViewEnProgreso'></TableView>
 			</Window>
 		</Tab>
-		<Tab id="tab3"  title="Finalizadas"  icon="KS_nav_ui.png">
+		<Tab id="tab3"  title="Finalizadas"  icon="KS_nav_ui.png" onFocus="cambiaTabFinalizadas">
 			<Window id="winTab3" backgroundColor="white">
+				<RightNavButton>
+                    <Button height="40" borderColor="blue" onClick="cerrarSesion">Cerrar</Button>
+			   	</RightNavButton>
+				<TableView width="Ti.UI.FILL" id='tableViewFinalizadas'></TableView>
 			</Window>
 		</Tab>
 	</TabGroup>
